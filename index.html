@@ -14,12 +14,21 @@
         <ul>
           <li><a href="index.html">blog</a></li>
           <li><a href="about.html">about</a></li>
+          <li><button class="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle dark mode">
+            <span class="sun-icon">&#9788;</span>
+            <span class="moon-icon">&#9790;</span>
+          </button></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main class="homepage">
+    <section class="hero">
+      <h2>Stories and advice for brain injury recovery</h2>
+      <p>One person's journey through TBI, and the lessons learned along the way</p>
+    </section>
+
     <ul class="image-grid">
       <li>
         <a href="articles/my-story.html">
@@ -123,5 +132,18 @@
   <footer>
     <p>TBI Life &copy; Jordan Schneider</p>
   </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDark);
+    }
+
+    // Check for saved preference
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
+  </script>
 </body>
 </html>
