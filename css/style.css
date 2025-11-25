@@ -74,6 +74,11 @@ main {
   padding: 3rem 2rem;
 }
 
+main.homepage {
+  max-width: 1200px;
+  padding: 0;
+}
+
 /* Article Styles */
 article {
   background: #fff;
@@ -81,6 +86,28 @@ article {
   margin-bottom: 2rem;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.article-hero {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  margin-bottom: 2rem;
+  border-radius: 4px;
+}
+
+.article-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.article-gallery img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 4px;
 }
 
 article h1 {
@@ -138,7 +165,63 @@ article li {
   margin-bottom: 0.5rem;
 }
 
-/* Homepage Article List */
+/* Homepage Image Grid */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  list-style: none;
+}
+
+.image-grid li {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.image-grid a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.image-grid .card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-grid li:hover .card-image {
+  transform: scale(1.05);
+}
+
+.image-grid .card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.image-grid .title {
+  color: #fff;
+  font-family: 'Georgia', serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: normal;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  line-height: 1.3;
+}
+
+/* Old Article List (keep for fallback) */
 .article-list {
   list-style: none;
 }
@@ -218,6 +301,16 @@ footer {
 }
 
 /* Responsive */
+@media (max-width: 900px) {
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .image-grid .title {
+    font-size: 1.2rem;
+  }
+}
+
 @media (max-width: 600px) {
   .header-content {
     flex-direction: column;
@@ -234,5 +327,14 @@ footer {
 
   article h1 {
     font-size: 1.6rem;
+  }
+
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .image-grid .title {
+    font-size: 1rem;
+    padding: 0.75rem;
   }
 }
